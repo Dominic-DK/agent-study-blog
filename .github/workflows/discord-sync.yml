@@ -1,0 +1,41 @@
+name: 디스코드 알림
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "notice-create = 고정 안내를 새로 올리기"
+        required: true
+        default: notice-create
+        type: choice
+        options: [notice-create]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: discord-sync
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 알림 보내기
+        env:
+          DISCORD_WEBHOOK_NOTICE: ${{ secrets.DISCORD_WEBHOOK_NOTICE }}
+          DISCORD_WEBHOOK_WORK: ${{ secrets.DISCORD_WEBHOOK_WORK }}
+          DISCORD_WEBHOOK_MEETING: ${{ secrets.DISCORD_WEBHOOK_MEETING }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          ACTOR: ${{ github.actor }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+        run: node .github/scripts/discord-sync.mjs ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'push' }}

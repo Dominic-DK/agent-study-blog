@@ -8,6 +8,17 @@ permalink: /
 
 > 현업에서 반복되는 일을 AI Agent에 어떻게 맡길 수 있을지, 각자의 실제 케이스로 같이 고민하고 만들어보는 스터디입니다.
 
+{% assign s = site.data.study %}
+🎙 **다음 미팅**: [{{ s.next_meeting.title }}]({{ '/' | append: s.next_meeting.page | relative_url }}) · {{ s.next_meeting.date }} {{ s.next_meeting.time }}
+{: .fs-5 }
+
+| 바로가기 | 주소 |
+|---|---|
+| 📒 사이트 | <{{ s.links.site }}> |
+| ✏️ 사이트 원본 (수정 · 삭제 · 글쓰기) | <{{ s.links.blog_repo }}> |
+| ❓ 질문 · 할 일 (비공개) | <{{ s.links.issues }}> |
+| 🙋 GitHub 초대 | 디스코드 `#{{ s.discord.channels.invite.name }}`에서 `@{{ s.discord.bot }}` 태그 + GitHub 아이디 |
+
 ## 기본 정보
 
 | 항목 | 내용 |

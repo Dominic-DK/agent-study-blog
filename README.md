@@ -16,3 +16,5 @@
 | `guides/` · `resources/` | 가이드 · 자료실 |
 | `how-to-edit.md` | 수정 · 삭제 · 글쓰기 도움말 |
 | `_config.yml` · `_includes/` | 사이트 설정 (테마: Just the Docs) |
+| `_data/study.json` | **공통 주소 · 채널 · 다음 미팅** — 바꾸면 사이트 홈 · 디스코드 고정 안내 · 비공개 저장소 README에 같이 반영 |
+| `.github/` | 디스코드 알림 자동화 (GitHub Actions) |

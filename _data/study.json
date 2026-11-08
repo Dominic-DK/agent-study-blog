@@ -1,0 +1,29 @@
+{
+  "title": "AI Agent 스터디",
+  "period": "2026-11-09 ~ 2026-12-20",
+  "links": {
+    "site": "https://dominic-dk.github.io/agent-study-blog/",
+    "blog_repo": "https://github.com/Dominic-DK/agent-study-blog",
+    "issues": "https://github.com/Dominic-DK/agent-study/issues",
+    "signup": "https://github.com/signup"
+  },
+  "next_meeting": {
+    "title": "킥오프",
+    "date": "2026-11-09",
+    "time": "",
+    "page": "meetings/2026-11-09-kickoff/"
+  },
+  "discord": {
+    "bot": "도미닉_에이전트",
+    "channels": {
+      "notice": { "id": "1568979722501619713", "name": "📢공지" },
+      "invite": { "id": "1568985733337718974", "name": "🙋github-초대" },
+      "resources": { "id": "1568979722501619714", "name": "📚자료" },
+      "question": { "id": "1568979722501619717", "name": "❓질문" },
+      "meeting": { "id": "1568979722501619718", "name": "📅미팅-일정" },
+      "work": { "id": "1568979722501619719", "name": "🛠작업공유" },
+      "free": { "id": "1568979722501619716", "name": "💬자유" }
+    },
+    "notice_message_id": ""
+  }
+}
