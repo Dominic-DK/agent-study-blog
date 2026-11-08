@@ -1,0 +1,49 @@
+title: AI Agent 스터디
+description: 현업에서 반복되는 일을 AI Agent에 맡기는 법을 각자의 케이스로 같이 만들어보는 스터디
+lang: ko
+url: https://dominic-dk.github.io
+baseurl: /agent-study-blog
+
+remote_theme: just-the-docs/just-the-docs@v0.12.0
+plugins:
+  - jekyll-remote-theme
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-seo-tag
+
+relative_links:
+  enabled: true
+  collections: true
+
+# 블로그 글 주소: /blog/2026/11/09/제목/
+permalink: /blog/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: default
+      nav_exclude: true
+
+search_enabled: true
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "맨 위로"
+
+# 수정 · 삭제 · 새 글 버튼은 _includes/footer_custom.html 에서 만듭니다
+gh_edit_link: false
+gh_edit_repository: "https://github.com/Dominic-DK/agent-study-blog"
+gh_edit_branch: "main"
+
+aux_links:
+  "📝 새 글 쓰기":
+    - "https://github.com/Dominic-DK/agent-study-blog/new/main/_posts?filename=2026-11-09-my-log.md&value=---%0Atitle%3A%20%EC%A0%9C%EB%AA%A9%EC%9D%84%20%EC%A0%81%EC%96%B4%EC%A3%BC%EC%84%B8%EC%9A%94%0Aauthor%3A%20%EC%9D%B4%EB%A6%84%0A---%0A%0A%EC%97%AC%EA%B8%B0%EC%97%90%20%EB%82%B4%EC%9A%A9%EC%9D%84%20%EC%A0%81%EC%96%B4%EC%A3%BC%EC%84%B8%EC%9A%94.%0A"
+  "❓ 질문 · 할 일":
+    - "https://github.com/Dominic-DK/agent-study/issues"
+aux_links_new_tab: true
+
+exclude:
+  - README.md
+  - _private/
+  - .github/
