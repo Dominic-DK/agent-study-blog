@@ -90,7 +90,9 @@ async function onPush() {
   const files = changedFiles(process.env.BEFORE, process.env.AFTER);
   const actor = process.env.ACTOR || '누군가';
   const commit = (process.env.COMMIT_MSG || '').split('\n')[0];
-  if (/\[skip discord\]/i.test(process.env.COMMIT_MSG || '')) { console.log('skip discord'); return; }
+  // [skip discord]: 알림만 건너뛰고, 고정 안내 동기화는 그대로 한다
+  const quiet = /\[skip discord\]/i.test(process.env.COMMIT_MSG || '');
+  if (quiet) console.log('skip discord: 알림 생략');
 
   const line = (f) => {
     const fm = frontMatter(f.path);
@@ -107,10 +109,15 @@ async function onPush() {
   const tail = commit ? `\n> ${commit}` : '';
   const soon = '\n-# 사이트 반영까지 1~2분 걸려요';
 
+  if (quiet) { /* 알림 생략 */ }
+  else if (posts.length || tracks.length || meetings.length || main.length) await notifyAll();
+
+  async function notifyAll() {
   if (posts.length) await webhook('DISCORD_WEBHOOK_WORK', { content: `📝 **새 블로그 글**\n${posts.map(line).join('\n')}${soon}` });
   if (tracks.length) await webhook('DISCORD_WEBHOOK_WORK', { content: `🛠 **개인 프로젝트 업데이트** — ${actor}\n${tracks.map(line).join('\n')}${tail}${soon}` });
   if (meetings.length) await webhook('DISCORD_WEBHOOK_MEETING', { content: `📅 **미팅 페이지 업데이트** — ${actor}\n${meetings.map(line).join('\n')}${tail}${soon}` });
   if (main.length) await webhook('DISCORD_WEBHOOK_NOTICE', { content: `📄 **사이트 업데이트** — ${actor}\n${main.map(line).join('\n')}${tail}${soon}` });
+  }
 
   if (files.some(f => f.path === '_data/study.json')) {
     const id = study.discord.notice_message_id;
@@ -122,7 +129,7 @@ async function onPush() {
       try { return JSON.parse(execFileSync('git', ['show', `${process.env.BEFORE}:_data/study.json`], { encoding: 'utf8' })).next_meeting; }
       catch { return null; }
     })();
-    if (prev && JSON.stringify(prev) !== JSON.stringify(study.next_meeting)) {
+    if (!quiet && prev && JSON.stringify(prev) !== JSON.stringify(study.next_meeting)) {
       await webhook('DISCORD_WEBHOOK_MEETING', { content: meetingLine().trim() || '📅 다음 미팅 정보가 바뀌었어요' });
     }
   }
