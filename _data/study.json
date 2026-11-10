@@ -8,10 +8,11 @@
     "signup": "https://github.com/signup"
   },
   "next_meeting": {
-    "title": "킥오프",
-    "date": "2026-11-09",
+    "title": "중간 공유",
+    "date": "",
     "time": "",
-    "page": "meetings/2026-11-09-kickoff/"
+    "note": "11/30 ~ 12/6 중 결정",
+    "page": "meetings/W4-midterm/"
   },
   "discord": {
     "bot": "도미닉_에이전트",

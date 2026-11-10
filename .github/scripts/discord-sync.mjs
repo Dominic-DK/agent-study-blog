@@ -29,11 +29,15 @@ async function webhook(urlEnv, { content, editId, wait }) {
 // ---------- 고정 안내 ----------
 function meetingLine() {
   const m = study.next_meeting;
-  if (!m?.date) return '';
-  const [y, mo, d] = m.date.split('-').map(Number);
-  const wd = WEEKDAY[new Date(Date.UTC(y, mo - 1, d)).getUTCDay()];
+  if (!m?.title) return '';
+  let when = m.note ? ` · ${m.note}` : '';   // 날짜가 아직 없으면 note(예: 「11/30 ~ 12/6 중 결정」)
+  if (m.date) {
+    const [y, mo, d] = m.date.split('-').map(Number);
+    const wd = WEEKDAY[new Date(Date.UTC(y, mo - 1, d)).getUTCDay()];
+    when = ` · ${mo}/${d}(${wd})${m.time ? ' ' + m.time : ''}`;
+  }
   const link = m.page ? `\n<${SITE}/${m.page}>` : '';
-  return `🎙 다음 미팅: **${m.title}** · ${mo}/${d}(${wd})${m.time ? ' ' + m.time : ''}${link}\n\n`;
+  return `🎙 다음 미팅: **${m.title}**${when}${link}\n\n`;
 }
 
 export function noticeText() {
