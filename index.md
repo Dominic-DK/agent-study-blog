@@ -9,7 +9,7 @@ permalink: /
 > 현업에서 반복되는 일을 AI Agent에 어떻게 맡길 수 있을지, 각자의 실제 케이스로 같이 고민하고 만들어보는 스터디입니다.
 
 {% assign s = site.data.study %}
-🎙 **다음 미팅**: [{{ s.next_meeting.title }}]({{ '/' | append: s.next_meeting.page | relative_url }}) · {% if s.next_meeting.date %}{{ s.next_meeting.date }} {{ s.next_meeting.time }}{% else %}{{ s.next_meeting.note }}{% endif %}
+🎙 **다음 미팅**: [{{ s.next_meeting.title }}]({{ '/' | append: s.next_meeting.page | relative_url }}) · {% if s.next_meeting.date != "" %}{{ s.next_meeting.date }} {{ s.next_meeting.time }}{% else %}{{ s.next_meeting.note }}{% endif %}
 {: .fs-5 }
 
 | 바로가기 | 주소 |
