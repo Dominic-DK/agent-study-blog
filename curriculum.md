@@ -24,6 +24,7 @@ nav_order: 3
 - **목표**: 서로 알기 · 진행 방식 합의 · 개인별 목표 · 기간 · 학습방법 확정 · CLI 설치
 - **미니 강의**: 에이전트 4요소(모델 · 지시·컨텍스트 · 도구 · 반복·검증) + [20달러 플랜에서 쓰는 원칙](guides/usage-principles.md)
   - 자료: [하네스 커리큘럼](https://harness-curriculum.vercel.app/) (이번 주부터 계속 참고)
+- **과제**: [W1 — 내 작업 공간 만들기](assignments/W1.md) · 보조자료 [Git 기초](guides/git-basics.md) · [AI 하나로 다 하기](guides/ai-os.md)
 - 안건 · 회의록 → [meetings/2026-11-09-kickoff.md](meetings/2026-11-09-kickoff.md)
 
 ## W2 📚 자료 1 — 지시 · 컨텍스트 · 출력 형식

@@ -109,18 +109,25 @@ async function onPush() {
   const posts = live.filter(f => f.status === 'A' && f.path.startsWith('_posts/'));
   const meetings = live.filter(f => f.path.startsWith('meetings/'));
   const tracks = live.filter(f => f.path.startsWith('tracks/'));
+  const assignments = live.filter(f => f.path.startsWith('assignments/'));
   const main = live.filter(f => /^(curriculum\.md|members\.md|guides\/|resources\/)/.test(f.path));
   const tail = commit ? `\n> ${commit}` : '';
   const soon = '\n-# 사이트 반영까지 1~2분 걸려요';
 
   if (quiet) { /* 알림 생략 */ }
-  else if (posts.length || tracks.length || meetings.length || main.length) await notifyAll();
+  else if (posts.length || assignments.length || tracks.length || meetings.length || main.length) await notifyAll();
 
   async function notifyAll() {
+  if (assignments.length) {
+    // 과제와 같이 바뀐 가이드 · 자료는 한 메시지로 묶어서 #📢공지에 두 번 가지 않게
+    const isNew = assignments.some(f => f.status === 'A');
+    const extra = main.length ? `\n**같이 올라온 자료**\n${main.map(line).join('\n')}` : '';
+    await webhook('DISCORD_WEBHOOK_NOTICE', { content: `📝 **${isNew ? '새 과제가 올라왔어요' : '과제 업데이트'}** — ${actor}\n${assignments.map(line).join('\n')}${extra}${tail}${soon}` });
+  }
   if (posts.length) await webhook('DISCORD_WEBHOOK_WORK', { content: `📝 **새 블로그 글**\n${posts.map(line).join('\n')}${soon}` });
   if (tracks.length) await webhook('DISCORD_WEBHOOK_WORK', { content: `🛠 **개인 프로젝트 업데이트** — ${actor}\n${tracks.map(line).join('\n')}${tail}${soon}` });
   if (meetings.length) await webhook('DISCORD_WEBHOOK_MEETING', { content: `📅 **미팅 페이지 업데이트** — ${actor}\n${meetings.map(line).join('\n')}${tail}${soon}` });
-  if (main.length) await webhook('DISCORD_WEBHOOK_NOTICE', { content: `📄 **사이트 업데이트** — ${actor}\n${main.map(line).join('\n')}${tail}${soon}` });
+  if (main.length && !assignments.length) await webhook('DISCORD_WEBHOOK_NOTICE', { content: `📄 **사이트 업데이트** — ${actor}\n${main.map(line).join('\n')}${tail}${soon}` });
   }
 
   if (files.some(f => f.path === '_data/study.json')) {

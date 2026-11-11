@@ -10,7 +10,9 @@ nav_order: 8
 | W1 | [Claude Code 설치 가이드](../guides/claude-code-setup.md) | 공통 | 실습 | ✅ 배포 |
 | W1 | [20달러 플랜에서 쓰는 원칙](../guides/usage-principles.md) | 공통 | 문서 | ✅ 배포 |
 | W1 | [하네스 커리큘럼](https://harness-curriculum.vercel.app/) — LLM 작동 원리부터 에이전트까지, 단원마다 3단계 난이도 | 공통 | 자료 | ✅ 배포 |
-| W1 | 보조자료 · 과제 (Git 기초 포함) | 공통 | 문서 | 준비 중 (11/12) |
+| W1 | [Git 기초 — 겁먹지 않게](../guides/git-basics.md) | 공통 | 문서 | ✅ 배포 |
+| W1 | [AI 하나로 다 하기 — 작업 공간 세팅](../guides/ai-os.md) | 공통 | 실습 | ✅ 배포 |
+| W1 | [W1 과제](../assignments/W1.md) | 공통 · 트랙별 | 과제 | ✅ 배포 |
 | W1 | [0단계 암묵지 인터뷰 질문](../tracks/wooju.md) | 우주 | 템플릿 | ✅ 배포 |
 | W2 | 자료 1 — 지시 · 컨텍스트 · 출력 형식 | 공통 | 문서 | 준비 중 (11/16) |
 | W2 | 이슈 → PR 흐름 연습 가이드 | 동균 | 실습 | 준비 중 (11/16) |
