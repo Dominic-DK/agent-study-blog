@@ -103,7 +103,8 @@ async function onPush() {
     const title = fm.title || f.path;
     return `- [${title}](<${pageUrl(f.path)}>)${fm.author ? ` — ${fm.author}` : ''}`;
   };
-  const isPage = (p) => p.endsWith('.md') && !p.endsWith('/index.md') && p !== 'README.md';
+  // resources/*-pack/ 는 과제용 연습 파일이라 사이트 페이지가 없다(_config.yml exclude) → 알림 링크에서 뺀다
+  const isPage = (p) => p.endsWith('.md') && !p.endsWith('/index.md') && p !== 'README.md' && !/^resources\/[^/]+-pack\//.test(p);
   const live = files.filter(f => f.status !== 'D' && isPage(f.path));
 
   const posts = live.filter(f => f.status === 'A' && f.path.startsWith('_posts/'));
