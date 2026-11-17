@@ -47,3 +47,4 @@ exclude:
   - README.md
   - _private/
   - .github/
+  - resources/w2-pack/   # 과제용 연습 파일. 저장소에만 두고 사이트 페이지로는 만들지 않는다
