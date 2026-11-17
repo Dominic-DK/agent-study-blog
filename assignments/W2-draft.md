@@ -1,7 +1,7 @@
 ---
 title: W2 초안 — 일 맡기고, 중간에 확인하고, 결과 받기
-parent: 과제
 nav_exclude: true
+search_exclude: true
 ---
 
 # 📝 W2 과제 — 일 맡기고, 중간에 확인하고, 결과 받기
